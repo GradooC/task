@@ -1,9 +1,6 @@
 // Написать реализацию метода forEach для объектов
-Object.prototype.forEach = function (fn) {
-  return Object.keys(this).reduce((acc, key) => {
-    acc[key] = fn(this[key]);
-    return acc;
-  }, {})
+Object.prototype.forEach = function (fn, thisArg) {
+  Object.keys(this).forEach((key, index) => fn.apply(thisArg, [key, index, this]));
 };
 
 //Вычислить Math.max на массиве
